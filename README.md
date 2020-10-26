@@ -5,3 +5,21 @@
 I've been using [webhippie](https://github.com/dockhippie/redis)'s MariaDB image for a while, but I wanted to use the latest version of [redis](https://redis.io/), and have a little more control over the image.
 
 There are no volumes or environment variables yet - though I may add some in the future.
+
+## Ports
+
+* 6379
+
+## Authors
+
+* Ben Green
+
+## License
+
+MIT
+
+## Copyright
+
+```
+Copyright (c) 2020 2020 Ben Green <https://bcgdesign.com>
+```
