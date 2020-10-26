@@ -8,5 +8,8 @@ LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
 
 COPY ./overlay /
 
-RUN /bin/bash -c 'chmod +x /usr/bin/fixpermissions' && \
+RUN apk update && \
+  apk upgrade && \
+  apk add bash && \
+  /bin/bash -c 'chmod +x /usr/bin/fixpermissions' && \
   /usr/bin/fixpermissions
