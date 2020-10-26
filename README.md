@@ -21,5 +21,5 @@ MIT
 ## Copyright
 
 ```
-Copyright (c) 2020 2020 Ben Green <https://bcgdesign.com>
+Copyright (c) 2020 Ben Green <https://bcgdesign.com>
 ```
