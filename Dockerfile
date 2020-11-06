@@ -1,4 +1,4 @@
-FROM redis:6.0.8-alpine3.12
+FROM redis:6.0.9-alpine3.12
 
 LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
   org.label-schema.name="Redis" \
@@ -8,8 +8,5 @@ LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
 
 COPY ./overlay /
 
-RUN apk update && \
-  apk upgrade && \
-  apk add bash && \
-  /bin/bash -c 'chmod +x /usr/bin/fixpermissions' && \
-  /usr/bin/fixpermissions
+RUN chmod +x /usr/bin/healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "/usr/bin/healthcheck" ]
