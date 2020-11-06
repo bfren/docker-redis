@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #======================================================================================================================
 # From https://github.com/docker-library/healthcheck/blob/master/redis/docker-healthcheck
