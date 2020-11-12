@@ -1,10 +1,13 @@
 FROM redis:6.0.9-alpine3.12
 
 LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
-  org.label-schema.name="Redis" \
-  org.label-schema.version="latest" \
-  org.label-schema.vendor="Ben Green" \
-  org.label-schema.schema-version="1.0"
+    org.label-schema.name="Redis" \
+    org.label-schema.version="latest" \
+    org.label-schema.vendor="Ben Green" \
+    org.label-schema.schema-version="1.0"
+
+RUN apk -U upgrade \
+    && rm -rf /var/cache/apk/*
 
 COPY ./overlay /
 
