@@ -2,7 +2,6 @@ name: build
 
 on:
   push:
-    branches: main
 
 jobs:
   main:
@@ -12,19 +11,25 @@ jobs:
         name: Checkout code
         uses: actions/checkout@v2
       -
-        name: Read Redis major version
+        name: Read Redis version - major
         uses: bencgreen/read-file-action@v1
         with:
           path: ./REDIS_MAJOR
         id: redis_major
       -
-        name: Read Redis minor version
+        name: Read Redis version - minor
         uses: bencgreen/read-file-action@v1
         with:
           path: ./REDIS_MINOR
         id: redis_minor
       -
-        name: Read version
+        name: Read Redis version - build
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./REDIS_BUILD
+        id: redis_build
+      -
+        name: Read image version
         uses: bencgreen/read-file-action@v1
         with:
           path: ./VERSION
@@ -50,9 +55,10 @@ jobs:
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           tags: |
             bcgdesign/redis:latest
+            bcgdesign/redis:${{ steps.version.outputs.content }}
             bcgdesign/redis:${{ steps.redis_major.outputs.content }}
             bcgdesign/redis:${{ steps.redis_minor.outputs.content }}
-            bcgdesign/redis:${{ steps.version.outputs.content }}
+            bcgdesign/redis:${{ steps.redis_build.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
