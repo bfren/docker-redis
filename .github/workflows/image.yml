@@ -23,11 +23,11 @@ jobs:
           path: ./REDIS_MINOR
         id: redis_minor
       -
-        name: Read Redis version - build
+        name: Read Redis version - revision
         uses: bencgreen/read-file-action@v1
         with:
-          path: ./REDIS_BUILD
-        id: redis_build
+          path: ./REDIS_REVISION
+        id: redis_revision
       -
         name: Read image version
         uses: bencgreen/read-file-action@v1
@@ -58,7 +58,7 @@ jobs:
             bcgdesign/redis:${{ steps.version.outputs.content }}
             bcgdesign/redis:${{ steps.redis_major.outputs.content }}
             bcgdesign/redis:${{ steps.redis_minor.outputs.content }}
-            bcgdesign/redis:${{ steps.redis_build.outputs.content }}
+            bcgdesign/redis:${{ steps.redis_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
