@@ -1,4 +1,4 @@
-FROM redis:6.0.9-alpine3.12
+FROM redis:6.0.10-alpine3.12
 
 LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
     org.label-schema.name="Redis" \
