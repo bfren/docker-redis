@@ -56,9 +56,9 @@ jobs:
           tags: |
             bcgdesign/redis:latest
             bcgdesign/redis:${{ steps.version.outputs.content }}
-            bcgdesign/redis:${{ steps.redis_major.outputs.content }}
-            bcgdesign/redis:${{ steps.redis_minor.outputs.content }}
-            bcgdesign/redis:${{ steps.redis_revision.outputs.content }}
+            bcgdesign/redis:redis-${{ steps.redis_major.outputs.content }}
+            bcgdesign/redis:redis-${{ steps.redis_minor.outputs.content }}
+            bcgdesign/redis:redis-${{ steps.redis_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
