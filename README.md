@@ -1,6 +1,6 @@
 # Docker Redis
 
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/bcgdesign/redis/latest?label=latest) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-redis/build?label=github) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/bcgdesign/redis?label=docker) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/redis?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/redis/latest?label=size)
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/bcgdesign/redis/latest) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-redis/build?label=github) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/bcgdesign/redis?label=docker) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/redis?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/redis/latest?label=size)
 
 [Docker Repository](https://hub.docker.com/r/bcgdesign/redis) - [bcg|design ecosystem](https://github.com/bencgreen/docker)
 
