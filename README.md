@@ -22,5 +22,5 @@ There are no volumes or environment variables yet - though I may add some in the
 
 ## Copyright
 
-> Copyright (c) 2021 Ben Green <https://bcgdesign.com>  
+> Copyright (c) 2021 Ben Green <https://bcgdesign.com>
 > Unless otherwise stated
