@@ -8,8 +8,7 @@ set -euo pipefail
 #======================================================================================================================
 
 HOST="$(hostname -i || echo '127.0.0.1')"
-PING="$(redis-cli -h "${HOST}" ping)"
-if [ "$PING" = 'PONG' ] ; then
+if PING="$(redis-cli -h "${HOST}" ping)" && [ "$PING" = 'PONG' ]; then
 	exit 0
 fi
 
