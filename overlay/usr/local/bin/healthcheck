@@ -1,14 +1,15 @@
 #!/bin/sh
 
+set -euo pipefail
+
+
 #======================================================================================================================
 # From https://github.com/docker-library/healthcheck/blob/master/redis/docker-healthcheck
 #======================================================================================================================
 
-set -eo pipefail
-
 HOST="$(hostname -i || echo '127.0.0.1')"
-
-if PING="$(redis-cli -h "${HOST}" ping)" && [ "$PING" = 'PONG' ]; then
+PING="$(redis-cli -h "${HOST}" ping)"
+if [ "$PING" = 'PONG' ] ; then
 	exit 0
 fi
 
