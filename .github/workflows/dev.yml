@@ -1,14 +1,25 @@
-name: build-dev
+name: dev
 
 on:
   push:
-    branches:
-      - '**'
+    branches-ignore:
+      - 'main'
     tags-ignore:
       - '**'
+    paths:
+      - '.github/workflows/dev.yml'
+      - 'overlay/**'
+      - 'Dockerfile'
+      - 'VERSION'
 
 jobs:
-  main:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout code
+        uses: actions/checkout@v2
+  build:
     runs-on: ubuntu-latest
     steps:
       -
