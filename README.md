@@ -18,7 +18,7 @@ There are no volumes or environment variables yet - though I may add some in the
 
 ## License
 
-> MIT
+> [MIT](https://bcg.mit-license.org/2020)
 
 ## Copyright
 
