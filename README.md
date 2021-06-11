@@ -1,9 +1,9 @@
 # Docker Redis
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bencgreen/docker-redis) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/redis?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/redis/latest?label=size)<br/>
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-redis/dev?label=build)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-redis) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/redis?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/redis/latest?label=size)<br/>
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-redis/dev?label=build)
 
-[Docker Repository](https://hub.docker.com/r/bcgdesign/redis) - [bcg|design ecosystem](https://github.com/bencgreen/docker)
+[Docker Repository](https://hub.docker.com/r/bcgdesign/redis) - [bfren ecosystem](https://github.com/bfren/docker)
 
 I've been using [webhippie](https://github.com/dockhippie/redis)'s Redis image for a while, but I wanted to use the latest version of [Redis](https://redis.io/), and have a little more control over the image.
 
@@ -13,15 +13,11 @@ There are no volumes or environment variables yet - though I may add some in the
 
 * 6379
 
-## Authors
+## Licence
 
-* [Ben Green](https://github.com/bencgreen)
-
-## License
-
-> [MIT](https://mit.bcgdesign.com/2020)
+> [MIT](https://mit.bfren.uk/2020)
 
 ## Copyright
 
-> Copyright (c) 2021 Ben Green <https://bcgdesign.com>
+> Copyright (c) 2021 bfren.uk
 > Unless otherwise stated
