@@ -14,25 +14,25 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Read Redis version - major
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_MAJOR
         id: redis_major
       -
         name: Read Redis version - minor
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_MINOR
         id: redis_minor
       -
         name: Read Redis version - revision
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_REVISION
         id: redis_revision
       -
         name: Read image version
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./VERSION
         id: version
