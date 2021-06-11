@@ -1,11 +1,5 @@
 FROM redis:6.2.4-alpine3.13
 
-LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
-    org.label-schema.name="Redis" \
-    org.label-schema.version="latest" \
-    org.label-schema.vendor="Ben Green" \
-    org.label-schema.schema-version="1.0"
-
 RUN apk -U upgrade \
     && rm -rf /var/cache/apk/*
 

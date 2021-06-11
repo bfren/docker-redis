@@ -14,25 +14,25 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Read Redis version - major
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_MAJOR
         id: redis_major
       -
         name: Read Redis version - minor
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_MINOR
         id: redis_minor
       -
         name: Read Redis version - revision
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./REDIS_REVISION
         id: redis_revision
       -
         name: Read image version
-        uses: bencgreen/read-file-action@v1
+        uses: bfren/read-file-action@v1
         with:
           path: ./VERSION
         id: version
@@ -56,13 +56,13 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           tags: |
-            bcgdesign/redis:latest
-            bcgdesign/redis:${{ steps.version.outputs.content }}
-            bcgdesign/redis:redis-${{ steps.redis_major.outputs.content }}
-            bcgdesign/redis:redis-${{ steps.redis_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/redis:redis-${{ steps.redis_minor.outputs.content }}
-            bcgdesign/redis:redis-${{ steps.redis_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/redis:redis-${{ steps.redis_revision.outputs.content }}
+            bfren/redis:latest
+            bfren/redis:${{ steps.version.outputs.content }}
+            bfren/redis:redis-${{ steps.redis_major.outputs.content }}
+            bfren/redis:redis-${{ steps.redis_major.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/redis:redis-${{ steps.redis_minor.outputs.content }}
+            bfren/redis:redis-${{ steps.redis_minor.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/redis:redis-${{ steps.redis_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
