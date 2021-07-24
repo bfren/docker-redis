@@ -1,4 +1,4 @@
-FROM redis:6.2.4-alpine3.14
+FROM redis:6.2.5-alpine3.14
 
 RUN apk -U upgrade \
     && rm -rf /var/cache/apk/*
