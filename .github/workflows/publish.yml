@@ -58,11 +58,11 @@ jobs:
           tags: |
             bfren/redis:latest
             bfren/redis:${{ steps.version.outputs.content }}
-            bfren/redis:redis-${{ steps.redis_major.outputs.content }}
-            bfren/redis:redis-${{ steps.redis_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/redis:redis-${{ steps.redis_minor.outputs.content }}
-            bfren/redis:redis-${{ steps.redis_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/redis:redis-${{ steps.redis_revision.outputs.content }}
+            bfren/redis:redis${{ steps.redis_major.outputs.content }}
+            bfren/redis:redis${{ steps.redis_major.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/redis:redis${{ steps.redis_minor.outputs.content }}
+            bfren/redis:redis${{ steps.redis_minor.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/redis:redis${{ steps.redis_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
