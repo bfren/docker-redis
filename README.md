@@ -7,11 +7,26 @@
 
 I've been using [webhippie](https://github.com/dockhippie/redis)'s Redis image for a while, but I wanted to use the latest version of [Redis](https://redis.io/), and have a little more control over the image.
 
-There are no volumes or environment variables yet - though I may add some in the future.  A healthcheck runs automatically to check Redis is healthy.
+## Contents
+
+* [Ports](#ports)
+* [Environment Variables](#environment-variables)
+* [Licence / Copyright](#licence)
 
 ## Ports
 
 * 6379
+
+## Environment Variables
+
+| Variable               | Values                          | Description                                                                                                                             | Default  |
+| ---------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `REDIS_PROTECTED_MODE` | no, yes                         | Change this to 'yes' if you are exposing Redis to the internet, and set REDIS_BIND to the server IP (you should not normally do this!). | no       |
+| `REDIS_BIND`           | IP                              | Leave this blank to bind Redis to all network interfaces - only do this if you are using Redis within a private Docker network.         | *blank*  |
+| `REDIS_LOG_LEVEL`      | debug, verbose, notice, warning | Log level.                                                                                                                              | notice   |
+| `REDIS_MAX_CLIENTS`    | integer                         | The maximum number of clients this instance can serve.                                                                                  | 10000    |
+| `REDIS_APPEND_ONLY`    | no, yes                         | See [here](https://redis.io/topics/persistence).                                                                                        | no       |
+| `REDIS_APPEND_FSYNC`   | no, always, everysec            | See [here](http://antirez.com/post/redis-persistence-demystified.html).                                                                 | everysec |
 
 ## Licence
 
