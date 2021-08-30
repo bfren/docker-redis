@@ -9,4 +9,4 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 bf-env "REDIS_DATA" "/data"
-bg-env "REDIS_CONFIG" "/etc/redis.conf"
+bf-env "REDIS_CONFIG" "/etc/redis.conf"
