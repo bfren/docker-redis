@@ -12,3 +12,5 @@ export BF_E=`basename ${0}`
 bf-debug "Generating ${REDIS_CONFIG}."
 esh -o ${REDIS_CONFIG} \
     ${BF_TEMPLATES}/redis.conf.esh
+
+bf-fix-attrs
