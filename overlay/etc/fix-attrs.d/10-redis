@@ -1,0 +1,2 @@
+/data true redis:redis 0644 0755
+/etc/redis.conf false redis:redis 0400 0400

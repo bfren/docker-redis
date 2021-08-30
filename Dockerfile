@@ -1,9 +1,26 @@
-FROM redis:6.2.5-alpine3.14
+FROM bfren/alpine-s6:alpine3.14-2.2.6
 
-RUN apk -U upgrade \
-    && rm -rf /var/cache/apk/*
+EXPOSE 6379
+
+ENV \
+    # change this to 'yes' if you are exposing Redis to the internet,
+    # and set REDIS_BIND to the server IP (you should not normally do this!)
+    REDIS_PROTECTED_MODE=no \
+    # leave this blank to bind Redis to all network interfaces - only do
+    # this if you are using Redis within a private Docker network
+    REDIS_BIND= \
+    # log level: debug, verbose, notice, warning
+    REDIS_LOG_LEVEL=notice \
+    # the maximum number of clients this instance can serve
+    REDIS_MAX_CLIENTS=10000 \
+    # see https://redis.io/topics/persistence
+    REDIS_APPEND_ONLY=no \
+    # see http://antirez.com/post/redis-persistence-demystified.html
+    REDIS_APPEND_FSYNC=everysec
 
 COPY ./overlay /
+COPY ./REDIS_BUILD /tmp/VERSION
 
-RUN chmod +x /usr/local/bin/healthcheck
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "healthcheck" ]
+RUN bf-install
+
+VOLUME [ "/data" ]
