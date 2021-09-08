@@ -30,9 +30,9 @@ I've been using [webhippie](https://github.com/dockhippie/redis)'s Redis image f
 
 ## Licence
 
-> [MIT](https://mit.bfren.uk/2020)
+> [MIT](https://mit.bfren.dev/2020)
 
 ## Copyright
 
-> Copyright (c) 2021 bfren.uk
+> Copyright (c) 2021 bfren
 > Unless otherwise stated
