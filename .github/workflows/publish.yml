@@ -16,19 +16,19 @@ jobs:
         name: Read Redis version - major
         uses: bfren/read-file@v1
         with:
-          path: ./REDIS_MAJOR
+          file: ./REDIS_MAJOR
         id: redis_major
       -
         name: Read Redis version - minor
         uses: bfren/read-file@v1
         with:
-          path: ./REDIS_MINOR
+          file: ./REDIS_MINOR
         id: redis_minor
       -
         name: Read Redis version - revision
         uses: bfren/read-file@v1
         with:
-          path: ./REDIS_REVISION
+          file: ./REDIS_REVISION
         id: redis_revision
       -
         name: Read image version
