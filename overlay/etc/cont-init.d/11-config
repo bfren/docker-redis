@@ -9,8 +9,9 @@ export BF_E=`basename ${0}`
 #======================================================================================================================
 
 # generate config from the template
-bf-debug "Generating ${REDIS_CONFIG}."
-esh -o ${REDIS_CONFIG} \
-    ${BF_TEMPLATES}/redis.conf.esh
+bf-echo "Generating ${REDIS_CONFIG}."
+bf-esh ${BF_TEMPLATES}/redis.conf.esh ${REDIS_CONFIG}
+bf-done
 
+# set attributes
 bf-fix-attrs
