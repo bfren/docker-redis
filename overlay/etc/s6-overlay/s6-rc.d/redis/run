@@ -9,4 +9,4 @@ export BF_E="${PWD##*/}/$(basename ${0})"
 #======================================================================================================================
 
 bf-echo "Starting Redis server."
-s6-setuidgid redis exec redis-server /etc/redis.conf
+s6-setuidgid redis exec redis-server ${REDIS_CONFIG}
