@@ -34,4 +34,4 @@ I've been using [webhippie](https://github.com/dockhippie/redis)'s Redis image f
 
 ## Copyright
 
-> Copyright (c) 2021 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2020-2022 [bfren](https://bfren.dev) (unless otherwise stated)

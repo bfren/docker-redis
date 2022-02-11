@@ -1,17 +1,12 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
-export BF_E=`basename ${0}`
+export BF_E="${PWD##*/}/$(basename ${0})"
 
 
 #======================================================================================================================
-# Generate Redis configuration file.
+# Run Redis server.
 #======================================================================================================================
 
-# generate config from the template
-bf-echo "Generating ${REDIS_CONFIG}."
-bf-esh ${BF_TEMPLATES}/redis.conf.esh ${REDIS_CONFIG}
-bf-done
-
-# set attributes
-bf-fix-attrs
+bf-echo "Starting Redis server."
+s6-setuidgid redis exec redis-server ${REDIS_CONFIG}

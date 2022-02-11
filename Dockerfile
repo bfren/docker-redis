@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.15-3.2.3
+FROM bfren/alpine-s6:alpine3.15-4.0.2
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -22,7 +22,7 @@ ENV \
     REDIS_APPEND_FSYNC=everysec
 
 COPY ./overlay /
-COPY ./REDIS_BUILD /tmp/VERSION
+COPY ./REDIS_BUILD /tmp/
 
 RUN bf-install
 

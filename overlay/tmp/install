@@ -17,8 +17,8 @@ bf-adduser redis
 
 cd /tmp
 
-VERSION=$(cat VERSION)
-bf-debug "Redis version ${VERSION}."
+VERSION=$(cat REDIS_BUILD)
+bf-echo "Redis version ${VERSION}."
 
 
 #======================================================================================================================
