@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
 export BF_E=`basename ${0}`
@@ -11,7 +11,4 @@ export BF_E=`basename ${0}`
 # generate config from the template
 bf-echo "Generating ${REDIS_CONFIG}."
 bf-esh ${BF_TEMPLATES}/redis.conf.esh ${REDIS_CONFIG}
-bf-done
-
-# set attributes
-bf-fix-attrs
+bf-ch -o redis:redis -m 0400 -t f ${REDIS_CONFIG}
