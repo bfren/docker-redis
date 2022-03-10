@@ -72,7 +72,7 @@
 # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
 # JUST COMMENT OUT THE FOLLOWING LINE.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<% if [ -n "${REDIS_BIND}" ] ; then %>
+<% if [ -n "${REDIS_BIND-}" ] ; then %>
 bind <%= "${REDIS_BIND}" %>
 <% fi %>
 
