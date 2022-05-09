@@ -1,7 +1,7 @@
 # Docker Redis
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-redis) ![Docker Pulls](https://img.shields.io/docker/pulls/bfren/redis?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bfren/redis/latest?label=size)<br/>
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-redis/dev?label=build)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-redis/dev-6?label=Redis+6) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-redis/dev-7?label=Redis+7)
 
 [Docker Repository](https://hub.docker.com/r/bfren/redis) - [bfren ecosystem](https://github.com/bfren/docker)
 
