@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.17-4.4.1
+FROM bfren/alpine-s6:alpine3.17-4.4.2
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-redis"
 
@@ -15,7 +15,7 @@ ENV \
     # this if you are using Redis within a private Docker network
     REDIS_BIND= \
     # if set, you will be required to use AUTH when accessing this instance
-    REDIS_PASS=\
+    REDIS_PASS= \
     # log level: debug, verbose, notice, warning
     REDIS_LOG_LEVEL=notice \
     # the maximum number of clients this instance can serve

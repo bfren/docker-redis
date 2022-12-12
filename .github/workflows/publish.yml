@@ -1,4 +1,4 @@
-name: publish-7
+name: publish
 
 on:
   release:
@@ -6,7 +6,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-7:
+  publish:
+    strategy:
+      matrix:
+        redis: [ "6", "7" ]
     runs-on: ubuntu-latest
     steps:
       -
@@ -20,19 +23,19 @@ jobs:
         name: Read Redis version - major
         uses: bfren/read-file@v2
         with:
-          file: ./7/overlay/tmp/REDIS_MAJOR
+          file: ./${{ matrix.redis }}/overlay/tmp/REDIS_MAJOR
         id: redis_major
       -
         name: Read Redis version - minor
         uses: bfren/read-file@v2
         with:
-          file: ./7/overlay/tmp/REDIS_MINOR
+          file: ./${{ matrix.redis }}/overlay/tmp/REDIS_MINOR
         id: redis_minor
       -
         name: Read Redis version - revision
         uses: bfren/read-file@v2
         with:
-          file: ./7/overlay/tmp/REDIS_REVISION
+          file: ./${{ matrix.redis }}/overlay/tmp/REDIS_REVISION
         id: redis_revision
       -
         name: Read image version
@@ -77,7 +80,31 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./7/Dockerfile
+          file: ./${{ matrix.redis }}/Dockerfile
+          build-args: |
+            BF_IMAGE=${{ env.REPOSITORY_NAME }}
+            BF_VERSION=${{ steps.version.outputs.contents }}
+          push: true
+          platforms: linux/amd64,linux/arm/v${{ matrix.redis }},linux/arm64
+          tags: |
+            bfren/redis:redis${{ steps.redis_major.outputs.contents }}
+            bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
+            bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
+      -
+        name: Build and push default
+        id: docker_build_default
+        if: matrix.redis == '7'
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./${{ matrix.redis }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
@@ -88,20 +115,10 @@ jobs:
             bfren/redis:${{ steps.version_major.outputs.contents }}
             bfren/redis:${{ steps.version_minor.outputs.contents }}
             bfren/redis:${{ steps.version.outputs.contents }}
-            bfren/redis:redis${{ steps.redis_major.outputs.contents }}
-            bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
-            bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
-            bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
             ghcr.io/bfren/redis:latest
             ghcr.io/bfren/redis:${{ steps.version_major.outputs.contents }}
             ghcr.io/bfren/redis:${{ steps.version_minor.outputs.contents }}
             ghcr.io/bfren/redis:${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

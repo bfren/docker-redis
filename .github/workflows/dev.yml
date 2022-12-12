@@ -1,4 +1,4 @@
-name: dev-6
+name: dev
 
 on:
   push:
@@ -7,13 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-6:
+  test:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout code
         uses: actions/checkout@v3
-  build-6:
+  build:
+    strategy:
+      matrix:
+        redis: [ "6", "7" ]
     runs-on: ubuntu-latest
     steps:
       -
@@ -54,17 +57,17 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./6/Dockerfile
+          file: ./${{ matrix.redis }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: ${{ startsWith(github.ref, 'refs/heads/') }}
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bfren/redis:redis6-dev
-            bfren/redis:redis6-${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/redis:redis6-dev
-            ghcr.io/bfren/redis:redis6-${{ steps.version.outputs.contents }}-beta
+            bfren/redis:redis${{ matrix.redis }}-dev
+            bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
+            ghcr.io/bfren/redis:redis${{ matrix.redis }}-dev
+            ghcr.io/bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
