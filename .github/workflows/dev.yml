@@ -62,7 +62,7 @@ jobs:
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: ${{ startsWith(github.ref, 'refs/heads/') }}
-          platforms: linux/amd64,linux/arm/v${{ matrix.redis }},linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/redis:redis${{ matrix.redis }}-dev
             bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
