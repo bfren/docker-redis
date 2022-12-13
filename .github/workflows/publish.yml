@@ -85,7 +85,7 @@ jobs:
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
-          platforms: linux/amd64,linux/arm/v${{ matrix.redis }},linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/redis:redis${{ steps.redis_major.outputs.contents }}
             bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
