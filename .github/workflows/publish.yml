@@ -93,11 +93,6 @@ jobs:
             bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
             bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
       -
         name: Build and push default
         id: docker_build_default
@@ -116,10 +111,6 @@ jobs:
             bfren/redis:${{ steps.version_major.outputs.contents }}
             bfren/redis:${{ steps.version_minor.outputs.contents }}
             bfren/redis:${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/redis:latest
-            ghcr.io/bfren/redis:${{ steps.version_major.outputs.contents }}
-            ghcr.io/bfren/redis:${{ steps.version_minor.outputs.contents }}
-            ghcr.io/bfren/redis:${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

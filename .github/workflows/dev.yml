@@ -67,8 +67,6 @@ jobs:
           tags: |
             bfren/redis:redis${{ matrix.redis }}-dev
             bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/redis:redis${{ matrix.redis }}-dev
-            ghcr.io/bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
