@@ -71,7 +71,7 @@ jobs:
       -
         name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./${{ matrix.redis }}/Dockerfile
@@ -90,7 +90,7 @@ jobs:
         name: Build and push default
         id: docker_build_default
         if: matrix.redis == '7'
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./${{ matrix.redis }}/Dockerfile
