@@ -1,1 +1,2 @@
 /data redis:redis 0644 0755
+/etc/redis/redis.conf redis:redis 0400

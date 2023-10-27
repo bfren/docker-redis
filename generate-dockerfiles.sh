@@ -4,8 +4,8 @@ set -euo pipefail
 
 docker pull bfren/alpine
 
-BASE_REVISION="4.5.9"
-echo "Base: ${BASE_REVISION}"
+BASE_VERSION="5.0.0-dev"
+echo "Base: ${BASE_VERSION}"
 
 REDIS_VERSIONS="6 7"
 for V in ${REDIS_VERSIONS} ; do
@@ -18,8 +18,8 @@ for V in ${REDIS_VERSIONS} ; do
         -e BF_DEBUG=0 \
         bfren/alpine esh \
         "/ws/Dockerfile.esh" \
-        ALPINE_MINOR=${ALPINE_MINOR} \
-        BASE_REVISION=${BASE_REVISION} \
+        ALPINE_EDITION=${ALPINE_MINOR} \
+        BASE_VERSION=${BASE_VERSION} \
         REDIS_MAJOR=${V}
     )
 

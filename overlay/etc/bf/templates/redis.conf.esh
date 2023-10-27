@@ -72,9 +72,9 @@
 # IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
 # JUST COMMENT OUT THE FOLLOWING LINE.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<% if [ -n "${REDIS_BIND-}" ] ; then %>
-bind <%= "${REDIS_BIND}" %>
-<% fi %>
+<% if bf-env-not-empty REDIS_BIND ; then -%>
+bind <% bf-env REDIS_BIND %>
+<% fi -%>
 
 # Protected mode is a layer of security protection, in order to avoid that
 # Redis instances left open on the internet are accessed and exploited.
@@ -93,7 +93,7 @@ bind <%= "${REDIS_BIND}" %>
 # you are sure you want clients from other hosts to connect to Redis
 # even if no authentication is configured, nor a specific set of interfaces
 # are explicitly listed using the "bind" directive.
-protected-mode <%= "${REDIS_PROTECTED_MODE}" %>
+protected-mode <% bf-env REDIS_PROTECTED_MODE %>
 
 # Accept connections on the specified port, default is 6379 (IANA #815344).
 # If port 0 is specified Redis will not listen on a TCP socket.
@@ -277,7 +277,7 @@ tcp-keepalive 300
 # verbose (many rarely useful info, but not a mess like the debug level)
 # notice (moderately verbose, what you want in production probably)
 # warning (only very important / critical messages are logged)
-loglevel <%= "${REDIS_LOG_LEVEL}" %>
+loglevel <% bf-env REDIS_LOG_LEVEL %>
 
 # Specify the log file name. Also the empty string can be used to force
 # Redis to log on the standard output. Note that if you use standard
@@ -434,7 +434,7 @@ rdb-del-sync-files no
 # The Append Only File will also be created inside this directory.
 #
 # Note that you must specify a directory here, not a file name.
-dir <%= "${REDIS_DATA}" %>
+dir <% bf-env REDIS_DATA %>
 
 ################################# REPLICATION #################################
 
@@ -882,9 +882,9 @@ acllog-max-len 128
 # The requirepass is not compatable with aclfile option and the ACL LOAD
 # command, these will cause requirepass to be ignored.
 #
-<% if [ -n "${REDIS_PASS-}" ] ; then %>
-requirepass <%= "${REDIS_PASS}" %>
-<% fi %>
+<% if bf-env-not-empty REDIS_PASS ; then %>
+requirepass <% bf-env REDIS_PASS %>
+<% fi -%>
 
 # New users are initialized with restrictive permissions by default, via the
 # equivalent of this ACL rule 'off resetkeys -@all'. Starting with Redis 6.2, it
@@ -948,7 +948,7 @@ requirepass <%= "${REDIS_PASS}" %>
 # connections, one incoming and another outgoing. It is important to size the
 # limit accordingly in case of very large clusters.
 #
-maxclients <%= "${REDIS_MAX_CLIENTS}" %>
+maxclients <% bf-env REDIS_MAX_CLIENTS %>
 
 ############################## MEMORY MANAGEMENT ################################
 
@@ -1235,7 +1235,7 @@ disable-thp yes
 #
 # Please check https://redis.io/topics/persistence for more information.
 
-appendonly <%= "${REDIS_APPEND_ONLY}" %>
+appendonly <% bf-env REDIS_APPEND_ONLY %>
 
 # The name of the append only file (default: "appendonly.aof")
 
@@ -1264,7 +1264,7 @@ appendfilename "appendonly.aof"
 #
 # If unsure, use "everysec".
 
-appendfsync <%= "${REDIS_APPEND_FSYNC}" %>
+appendfsync <% bf-env REDIS_APPEND_FSYNC %>
 
 # When the AOF fsync policy is set to always or everysec, and a background
 # saving process (a background save or AOF log background rewriting) is
@@ -2026,10 +2026,3 @@ jemalloc-bg-thread yes
 #
 # Set bgsave child process to cpu affinity 1,10,11
 # bgsave_cpulist 1,10-11
-
-# In some cases redis will emit warnings and even refuse to start if it detects
-# that the system is in bad state, it is possible to suppress these warnings
-# by setting the following config which takes a space delimited list of warnings
-# to suppress
-#
-# ignore-warnings ARM64-COW-BUG
