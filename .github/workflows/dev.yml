@@ -59,7 +59,7 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/redis:redis${{ matrix.redis }}-dev
-            bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-beta
+            bfren/redis:redis${{ matrix.redis }}-${{ steps.version.outputs.contents }}-dev
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
