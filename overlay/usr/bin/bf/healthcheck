@@ -6,9 +6,9 @@ bf env load -x
 # From https://github.com/docker-library/healthcheck/blob/master/redis/docker-healthcheck
 def main [] {
     # get the host IP to ping
-    let host = do { ^hostname -i } | complete | $in.stdout | str trim | match $in { $h if $h != "" => $h, _ => "127.0.0.1" }
+    let host = { ^hostname -i } | bf handle -i | match $in { $h if $h != "" => $h, _ => "127.0.0.1" }
 
     # ping host
     bf write debug $"Pinging redis host ($host)."
-    if (do { ^redis-cli -h $host ping } | complete | $in.stdout | str trim) != "PONG" { exit 1 }
+    if ({ ^redis-cli -h $host ping } | bf handle -i) != "PONG" { exit 1 }
 }
