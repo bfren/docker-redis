@@ -6,7 +6,7 @@ export def preflight [] {
     bf env load
 
     # manually set executing script
-    bf env set X redis/run
+    bf env x_set --override run redis
 
     # if we get here we are ready to start redis
     bf write "Starting redis server."
