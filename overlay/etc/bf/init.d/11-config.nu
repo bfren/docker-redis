@@ -9,6 +9,6 @@ def main [] {
 
     # generate configuration
     bf write "Generating redis configuration."
-    bf esh template (bf env REDIS_CONF | path basename) $etc
+    bf esh template (bf env REDIS_CONF)
     bf ch apply_file "10-redis"
 }
