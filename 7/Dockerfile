@@ -7,6 +7,9 @@ ARG BF_VERSION
 
 EXPOSE 6379
 
+COPY ./overlay /
+COPY ./7/overlay /
+
 ENV \
     # see https://redis.io/topics/persistence
     BF_REDIS_APPEND_ONLY=no \
@@ -24,9 +27,6 @@ ENV \
     # change this to 'yes' if you are exposing Redis to the internet,
     # and set REDIS_BIND to the server IP (you should not normally do this!)
     BF_REDIS_PROTECTED_MODE=no
-
-COPY ./overlay /
-COPY ./7/overlay /
 
 RUN bf-install
 
