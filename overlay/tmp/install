@@ -9,7 +9,7 @@ def main [] {
 
     # get redis version and install
     cd /tmp
-    let version = bf fs read ./REDIS_BUILD
+    let version = bf fs read REDIS_BUILD
     bf write $"Installing redis v($version)."
     bf pkg install [$"redis=($version)"]
 
