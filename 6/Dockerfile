@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.15-5.1.2
+FROM bfren/alpine-s6:alpine3.15-5.1.3
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-redis"
 
