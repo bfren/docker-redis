@@ -69,6 +69,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v5
@@ -77,6 +84,7 @@ jobs:
           file: ./${{ matrix.redis }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
+            BF_PUBLISHING=1
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
@@ -86,6 +94,11 @@ jobs:
             bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
             bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/redis:redis${{ steps.redis_revision.outputs.contents }}
       -
         name: Build and push default
         id: docker_build_default
@@ -96,6 +109,7 @@ jobs:
           file: ./${{ matrix.redis }}/Dockerfile
           build-args: |
             BF_IMAGE=${{ env.REPOSITORY_NAME }}
+            BF_PUBLISHING=1
             BF_VERSION=${{ steps.version.outputs.contents }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
@@ -104,6 +118,10 @@ jobs:
             bfren/redis:${{ steps.version_major.outputs.contents }}
             bfren/redis:${{ steps.version_minor.outputs.contents }}
             bfren/redis:${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/redis:latest
+            ghcr.io/bfren/redis:${{ steps.version_major.outputs.contents }}
+            ghcr.io/bfren/redis:${{ steps.version_minor.outputs.contents }}
+            ghcr.io/bfren/redis:${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
