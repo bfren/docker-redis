@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        redis: [ "6", "7" ]
+        redis: [ "6", "7", "8" ]
     runs-on: ubuntu-latest
     steps:
       -
