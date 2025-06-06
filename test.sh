@@ -2,7 +2,7 @@
 
 IMAGE=redis
 VERSION=`cat VERSION`
-REDIS=${1:-7}
+REDIS=${1:-8}
 TAG=${IMAGE}-test
 
 docker buildx build \
