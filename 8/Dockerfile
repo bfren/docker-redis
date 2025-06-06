@@ -1,4 +1,4 @@
-FROM ghcr.io/bfren/alpine-s6:alpine3.15-5.6.0
+FROM ghcr.io/bfren/alpine-s6:alpine3.22-5.6.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-redis"
 
@@ -9,7 +9,7 @@ ARG BF_VERSION
 EXPOSE 6379
 
 COPY ./overlay /
-COPY ./6/overlay /
+COPY ./8/overlay /
 
 ENV \
     # see https://redis.io/topics/persistence

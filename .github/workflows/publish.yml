@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        redis: [ "6", "7" ]
+        redis: [ "6", "7", "8" ]
     runs-on: ubuntu-latest
     steps:
       -
@@ -102,7 +102,7 @@ jobs:
       -
         name: Build and push default
         id: docker_build_default
-        if: matrix.redis == '7'
+        if: matrix.redis == '8'
         uses: docker/build-push-action@v6
         with:
           context: .

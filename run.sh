@@ -1,7 +1,7 @@
 #!/bin/sh
 
 IMAGE=`cat VERSION`
-REDIS=${1:-7}
+REDIS=${1:-8}
 
 docker buildx build \
     --load \
