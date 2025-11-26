@@ -1,4 +1,4 @@
-FROM quay.io/bfren/alpine-s6:alpine3.21-5.6.7
+FROM quay.io/bfren/alpine-s6:alpine3.21-6.0.1
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-redis"
 
