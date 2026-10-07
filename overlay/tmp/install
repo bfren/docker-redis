@@ -17,5 +17,5 @@ def main [] {
     bf build add Redis $version
 
     # add bf-redis module to config
-    bf config use bf-redis
+    bf config use_mod bf-redis
 }
