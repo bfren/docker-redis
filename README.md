@@ -10,6 +10,7 @@ Basic Redis image with support for v6 and v7 and various configuration options.
 
 * [Ports](#ports)
 * [Environment Variables](#environment-variables)
+* [Host Configuration](#host-configuration)
 * [Licence / Copyright](#licence)
 
 ## Ports
@@ -27,6 +28,16 @@ Basic Redis image with support for v6 and v7 and various configuration options.
 | `REDIS_MAX_CLIENTS`    | integer                         | The maximum number of clients this instance can serve.                                                                                  | 10000    |
 | `REDIS_APPEND_ONLY`    | no, yes                         | See [here](https://redis.io/topics/persistence).                                                                                        | no       |
 | `REDIS_APPEND_FSYNC`   | no, always, everysec            | See [here](http://antirez.com/post/redis-persistence-demystified.html).                                                                 | everysec |
+
+## Host Configuration
+
+Redis warns at startup if memory overcommit is disabled, as background saves (which fork the process) may then fail under low memory.
+This is a kernel-wide setting so it cannot be changed from inside the container - set it on the Docker host instead:
+
+```bash
+sudo sysctl vm.overcommit_memory=1
+echo 'vm.overcommit_memory = 1' | sudo tee /etc/sysctl.d/99-overcommit.conf
+```
 
 ## Licence
 
