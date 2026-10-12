@@ -9,8 +9,8 @@ def main [] {
     let host = { ^hostname -i } | bf handle -i | match $in { $h if $h != "" => $h, _ => "127.0.0.1" }
 
     # pass password (if set)
-    let auth = match ($env.BF_REDIS_PASS? | default "") {
-        "" => {},
+    let auth = match (bf env --safe REDIS_PASS) {
+        "" => ({}),
         $p => {REDISCLI_AUTH: $p}
     }
 
