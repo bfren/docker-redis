@@ -1,17 +1,23 @@
-#!/bin/withenv sh
+#!/usr/bin/nu
 
-set -euo pipefail
+use bf
+use bf-s6
+bf env load
 
+# Start the Redis server as the redis user
+def main [
+    name: string    # The service name, passed by s6-supervise
+] {
+    # set executable name - used to make log output more useful
+    bf env x_set --override run $name
 
-#======================================================================================================================
-# Run preflight checks
-#======================================================================================================================
+    # run checks before executing service
+    bf write debug "No pre-run checks required."
 
-nu -c "use bf-redis run ; run preflight"
-
-
-#======================================================================================================================
-# Run redis server
-#======================================================================================================================
-
-exec s6-setuidgid redis redis-server ${BF_REDIS_CONF}
+    # launch Redis service
+    bf write "Starting redis server."
+    let args = [
+        (bf env REDIS_CONF)
+    ]
+    bf-s6 svc launch s6-setuidgid redis redis-server ...$args
+}
