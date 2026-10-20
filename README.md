@@ -110,8 +110,9 @@ echo 'vm.overcommit_memory = 1' | sudo tee /etc/sysctl.d/99-overcommit.conf
 ## Testing
 
 ```sh
-./test.sh                   # builds Redis 8 and runs /test
-./test.sh 6                 # or any version directory
+./test.nu                   # builds Redis 8 and runs /test
+./test.nu 6                 # or any version directory
+./test.nu --all             # every version, in parallel
 ./run.sh 8                  # builds and opens a shell
 ./generate-dockerfiles.sh   # regenerates the Dockerfiles from Dockerfile.esh
 ```
