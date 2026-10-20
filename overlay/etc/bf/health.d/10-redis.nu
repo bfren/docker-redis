@@ -1,5 +1,3 @@
-#!/usr/bin/nu
-
 use bf
 use bf-redis
 bf env load -x

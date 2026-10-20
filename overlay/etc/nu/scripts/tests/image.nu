@@ -25,7 +25,7 @@ export def install__redis_matches_build [] {
 
 export def scripts__parse [] {
     let paths = [
-        "/usr/bin/bf/bf-healthcheck"
+        "/etc/bf/health.d/10-redis.nu"
         "/etc/s6-overlay/s6-rc.d/redis/run"
         "/etc/s6-overlay/s6-rc.d/redis/finish"
     ]
