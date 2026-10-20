@@ -1,26 +1,21 @@
 #!/usr/bin/nu
 
 use bf
+use bf-redis
 bf env load -x
 
-# From https://github.com/docker-library/healthcheck/blob/master/redis/docker-healthcheck
+# Based on https://github.com/docker-library/healthcheck/blob/master/redis/docker-healthcheck
 def main [] {
-    # get the host IP to ping
-    let host = { ^hostname -i } | bf handle -i | match $in { $h if $h != "" => $h, _ => "127.0.0.1" }
+    # get the address to ping
+    let host = { ^hostname -i } | bf handle -i | bf-redis health ping_host $in
 
-    # pass password (if set)
-    let auth = match (bf env --safe REDIS_PASS) {
-        "" => ({}),
-        $p => {REDISCLI_AUTH: $p}
-    }
-
-    # ping host
+    # ping host, passing the password (if set)
     bf write debug $"Pinging redis host ($host)."
     let args = [
         "-h"
         $host
         "ping"
     ]
-    let ping = with-env $auth { { ^redis-cli ...$args } | bf handle -i }
+    let ping = with-env (bf-redis health cli_env) { { ^redis-cli ...$args } | bf handle -i }
     if $ping != "PONG" { exit 1 }
 }
