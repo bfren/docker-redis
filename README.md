@@ -34,7 +34,7 @@ docker compose exec redis redis-cli
 
 ## Features
 
-* 🟥 Redis 6, 7 and 8 - choose with the image tag
+* 🟥 Redis 7 and 8 - choose with the image tag
 * ⚙️ Password, bind address, persistence, log level and client limit set with environment variables
 * 💾 Data saved to `/data` with Redis's default snapshot schedule, and optional append-only file
 * 🩺 Health check that pings the server, using the password if one is set
@@ -58,9 +58,8 @@ Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/r
 | ----- | ------- | ------ |
 | 8     | 8.8.0   | 3.24   |
 | 7     | 7.2.11  | 3.21   |
-| 6     | 6.2.18  | 3.15   |
 
-Use Redis 8 for anything new - Redis 6 and 7 are kept for apps that need them.
+Use Redis 8 for anything new - Redis 7 is kept for apps that need it.
 
 ## Configuration
 
@@ -111,7 +110,7 @@ echo 'vm.overcommit_memory = 1' | sudo tee /etc/sysctl.d/99-overcommit.conf
 
 ```sh
 ./test.nu                   # builds Redis 8 and runs /test
-./test.nu 6                 # or any version directory
+./test.nu 7                 # or any version directory
 ./test.nu --all             # every version, in parallel
 ./run.sh 8                  # builds and opens a shell
 ./generate-dockerfiles.sh   # regenerates the Dockerfiles from Dockerfile.esh
