@@ -3,7 +3,6 @@
 use ../index/test.nu
 
 const redis_branches = [
-    "6"
     "7"
     "8"
 ]
