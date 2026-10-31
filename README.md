@@ -45,14 +45,14 @@ docker compose exec redis redis-cli
 
 Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/redis`) for `linux/amd64`, `linux/arm/v7` and `linux/arm64`.
 
-| Tag                            | Example           | Use when                                                        |
-| ------------------------------ | ----------------- | --------------------------------------------------------------- |
-| `redisN`                       | `redis8`          | You want the latest image for a Redis version - **recommended** |
-| `redisN.M`                     | `redis8.8`        | You want the latest image for a Redis minor version             |
-| `redisN.M.R`                   | `redis8.8.0`      | You want an exact Redis release                                 |
-| `redisN-VERSION`               | `redis8-6.1.16`   | You want to pin this image exactly                              |
-| `redisN.M-VERSION`             | `redis8.8-6.1.16` | You want to pin both                                            |
-| `latest`, `6`, `6.1`, `6.1.16` |                   | As above, on Redis 8                                            |
+| Tag                           | Example          | Use when                                                        |
+| ----------------------------- | ---------------- | --------------------------------------------------------------- |
+| `redisN`                      | `redis8`         | You want the latest image for a Redis version - **recommended** |
+| `redisN.M`                    | `redis8.8`       | You want the latest image for a Redis minor version             |
+| `redisN.M.R`                  | `redis8.8.0`     | You want an exact Redis release                                 |
+| `redisN-VERSION`              | `redis8-8.0.0`   | You want to pin this image exactly                              |
+| `redisN.M-VERSION`            | `redis8.8-8.0.0` | You want to pin both                                            |
+| `latest`, `8`, `8.0`, `8.0.0` |                  | As above, on Redis 8                                            |
 
 | Redis | Release | Alpine |
 | ----- | ------- | ------ |
