@@ -1,6 +1,6 @@
 # Redis
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-redis) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fredis) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fredis) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-redis/dev.yml?branch=main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-redis) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fredis) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fredis) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-redis/build.yml?branch=main)
 
 [Docker Hub](https://hub.docker.com/r/bfren/redis) - [Quay.io](https://quay.io/repository/bfren/redis) - [bfren ecosystem](https://github.com/bfren/docker)
 
@@ -45,14 +45,14 @@ docker compose exec redis redis-cli
 
 Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/redis`) for `linux/amd64`, `linux/arm/v7` and `linux/arm64`.
 
-| Tag                            | Example           | Use when                                                        |
-| ------------------------------ | ----------------- | --------------------------------------------------------------- |
-| `redisN`                       | `redis8`          | You want the latest image for a Redis version - **recommended** |
-| `redisN.M`                     | `redis8.8`        | You want the latest image for a Redis minor version             |
-| `redisN.M.R`                   | `redis8.8.0`      | You want an exact Redis release                                 |
-| `redisN-VERSION`               | `redis8-6.1.16`   | You want to pin this image exactly                              |
-| `redisN.M-VERSION`             | `redis8.8-6.1.16` | You want to pin both                                            |
-| `latest`, `6`, `6.1`, `6.1.16` |                   | As above, on Redis 8                                            |
+| Tag                           | Example          | Use when                                                        |
+| ----------------------------- | ---------------- | --------------------------------------------------------------- |
+| `redisN`                      | `redis8`         | You want the latest image for a Redis version - **recommended** |
+| `redisN.M`                    | `redis8.8`       | You want the latest image for a Redis minor version             |
+| `redisN.M.R`                  | `redis8.8.0`     | You want an exact Redis release                                 |
+| `redisN-VERSION`              | `redis8-8.0.0`   | You want to pin this image exactly                              |
+| `redisN.M-VERSION`            | `redis8.8-8.0.0` | You want to pin both                                            |
+| `latest`, `8`, `8.0`, `8.0.0` |                  | As above, on Redis 8                                            |
 
 | Redis | Release | Alpine |
 | ----- | ------- | ------ |
