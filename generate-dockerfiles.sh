@@ -27,5 +27,4 @@ for V in ${REDIS_VERSIONS} ; do
 
 done
 
-docker system prune -f
 echo "Done."
