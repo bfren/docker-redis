@@ -50,9 +50,9 @@ Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/r
 | `redisN`                      | `redis8`         | You want the latest image for a Redis version - **recommended** |
 | `redisN.M`                    | `redis8.8`       | You want the latest image for a Redis minor version             |
 | `redisN.M.R`                  | `redis8.8.0`     | You want an exact Redis release                                 |
-| `redisN-VERSION`              | `redis8-8.0.1`   | You want to pin this image exactly                              |
-| `redisN.M-VERSION`            | `redis8.8-8.0.1` | You want to pin both                                            |
-| `latest`, `8`, `8.0`, `8.0.1` |                  | As above, on Redis 8                                            |
+| `redisN-VERSION`              | `redis8-8.0.2`   | You want to pin this image exactly                              |
+| `redisN.M-VERSION`            | `redis8.8-8.0.2` | You want to pin both                                            |
+| `latest`, `8`, `8.0`, `8.0.2` |                  | As above, on Redis 8                                            |
 
 | Redis | Release | Alpine |
 | ----- | ------- | ------ |
