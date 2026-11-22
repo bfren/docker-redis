@@ -56,6 +56,8 @@ Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/r
 | `redisN.M-VERSION`            | `redis8.8-8.0.3` | You want to pin both                                            |
 | `latest`, `8`, `8.0`, `8.0.3` |                  | As above, on Redis 8                                            |
 
+A new `MAJOR` version means a breaking change. Before moving to one, read the [changelog](CHANGELOG.md), where each breaking change is marked **Breaking**.
+
 | Redis | Release | Alpine |
 | ----- | ------- | ------ |
 | 8     | 8.8.0   | 3.24   |
