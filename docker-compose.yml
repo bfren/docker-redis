@@ -1,0 +1,11 @@
+services:
+  redis:
+    image: quay.io/bfren/redis:redis8
+    restart: unless-stopped
+    volumes:
+      - ./v/redis:/data
+
+  app:
+    image: your/app
+    environment:
+      - REDIS_HOST=redis

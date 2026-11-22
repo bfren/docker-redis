@@ -26,6 +26,8 @@ services:
       - REDIS_HOST=redis
 ```
 
+This example is also in [`docker-compose.yml`](docker-compose.yml).
+
 Run `docker compose up -d` - your app connects to `redis:6379`. To use the Redis CLI:
 
 ```sh
