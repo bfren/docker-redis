@@ -26,6 +26,8 @@ services:
       - REDIS_HOST=redis
 ```
 
+This example is also in [`docker-compose.yml`](docker-compose.yml).
+
 Run `docker compose up -d` - your app connects to `redis:6379`. To use the Redis CLI:
 
 ```sh
@@ -50,9 +52,11 @@ Images are published to Docker Hub (`bfren/redis`) and Quay.io (`quay.io/bfren/r
 | `redisN`                      | `redis8`         | You want the latest image for a Redis version - **recommended** |
 | `redisN.M`                    | `redis8.8`       | You want the latest image for a Redis minor version             |
 | `redisN.M.R`                  | `redis8.8.0`     | You want an exact Redis release                                 |
-| `redisN-VERSION`              | `redis8-8.0.2`   | You want to pin this image exactly                              |
-| `redisN.M-VERSION`            | `redis8.8-8.0.2` | You want to pin both                                            |
-| `latest`, `8`, `8.0`, `8.0.2` |                  | As above, on Redis 8                                            |
+| `redisN-VERSION`              | `redis8-8.0.3`   | You want to pin this image exactly                              |
+| `redisN.M-VERSION`            | `redis8.8-8.0.3` | You want to pin both                                            |
+| `latest`, `8`, `8.0`, `8.0.3` |                  | As above, on Redis 8                                            |
+
+A new `MAJOR` version means a breaking change. Before moving to one, read the [changelog](CHANGELOG.md), where each breaking change is marked **Breaking**.
 
 | Redis | Release | Alpine |
 | ----- | ------- | ------ |
@@ -144,7 +148,18 @@ Only if something outside Docker needs Redis, and then set `BF_REDIS_PASS` and p
 
 ### Can I add my own Redis settings?
 
-`redis.conf` is generated on every start, so changes to it are lost. Build your own image from this one and change `/etc/bf/templates/redis.conf.esh`.
+`redis.conf` is generated on every start, so changes to it are lost. Instead, build your own image with a changed template:
+
+1. Copy [`overlay/etc/bf/templates/redis.conf.esh`](overlay/etc/bf/templates/redis.conf.esh) from this repository to the same path in your image's `overlay` folder, and change it.
+2. Build your image:
+
+```dockerfile
+FROM quay.io/bfren/redis:redis8
+
+COPY ./overlay /
+```
+
+The template is used on every start, so your settings are kept.
 
 ## Licence
 
